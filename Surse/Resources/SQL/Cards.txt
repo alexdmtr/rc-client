@@ -1,0 +1,14 @@
+﻿INSERT INTO Cards	(Type,				CardType,			CardGFX, 			Name, Mana,	Attack,	Health, Quote)
+			VALUES	('CARD_ROBB_STARK',	'CARDTYPE_CHARACTER', 'CARDGFX_ROBB_STARK', 'Robb Stark', 	0,	0,	30, 'Winter is coming.'),
+					('CARD_CERSEI_LANNISTER', 'CARDTYPE_CHARACTER', 'CARDGFX_CERSEI_LANNISTER', 'Cersei Lannister', 0, 0, 30, 'When you play the game of thrones, you win or you die. There is no middle ground.'),
+					('CARD_DAENERYS_TARGARYEN', 'CARDTYPE_CHARACTER', 'CARDGFX_DAENERYS_TARGARYEN', 'Daenerys Targaryen', 0, 0, 30, 'I have never been nothing. I am the blood of the dragon.'),
+					('CARD_STANNIS_BARATHEON', 'CARDTYPE_CHARACTER', 'CARDGFX_STANNIS_BARATHEON', 'Stannis Baratheon', 0, 0, 30, 'The Iron Throne is mine by right. All those who deny that are my foes.'),
+					('CARD_JAIME_LANNISTER','CARDTYPE_CHARACTER', 'CARDGFX_JAIME_LANNISTER', 'Jaime Lannister', 	8,	6,	6, ''),
+					('CARD_STARK_FOOTMAN',	'CARDTYPE_CHARACTER', 'CARDGFX_STARK_FOOTMAN', 'Northern Footman',	2,	1,	2, ''),
+					('CARD_LANNISTER_FOOTMAN','CARDTYPE_CHARACTER', 		'CARDGFX_LANNISTER_FOOTMAN', 'Lannister Footman', 2,	2,	2, ''),
+					('CARD_STARK_CAVALRY',	'CARDTYPE_CHARACTER', 'CARDGFX_STARK_CAVALRY', 'Northen Rider',	3,	4,	2, ''),
+					('CARD_CHELLA', 'CARDTYPE_CHARACTER', 'CARDGFX_CHELLA', 'Chella, daughter of Cheyk', 4, 3, 6, ''),
+					('CARD_SHAGGA', 'CARDTYPE_CHARACTER', 'CARDGFX_SHAGGA', 'Shagga, son of Dolf', 6, 5, 8, ''),
+					('CARD_TIMETT', 'CARDTYPE_CHARACTER', 'CARDGFX_TIMETT', 'Timett, son of Timett', 5, 4, 7, ''),
+					('CARD_LANNISTER_CAVALRY', 'CARDTYPE_CHARACTER', 'CARDGFX_LANNISTER_CAVALRY', 'Lannister Cavalry', 4, 5, 4, ''),
+					('CARD_THEON_GREYJOY', 'CARDTYPE_CHARACTER', 'CARDGFX_THEON_GREYJOY', 'Theon Greyjoy', 5, 4, 7, '')
