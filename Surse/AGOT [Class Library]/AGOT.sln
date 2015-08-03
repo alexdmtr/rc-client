@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGOT", "AGOT\AGOT.csproj", "{58FB0725-725E-46EE-91F5-B7339576F2C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGOT.Sql", "..\AGOT.Sql\AGOT.Sql\AGOT.Sql.csproj", "{365E859F-1422-4E4B-8DE7-852BED722940}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58FB0725-725E-46EE-91F5-B7339576F2C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FB0725-725E-46EE-91F5-B7339576F2C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FB0725-725E-46EE-91F5-B7339576F2C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FB0725-725E-46EE-91F5-B7339576F2C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365E859F-1422-4E4B-8DE7-852BED722940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365E859F-1422-4E4B-8DE7-852BED722940}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365E859F-1422-4E4B-8DE7-852BED722940}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365E859F-1422-4E4B-8DE7-852BED722940}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,8 @@
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\bin\Debug\ACOK.Sql.dll
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\bin\Debug\ACOK.Sql.pdb
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\bin\Debug\Mono.Data.dll
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\bin\Debug\Mono.Data.SqliteClient.dll
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\obj\Debug\ACOK.Sql.csprojResolveAssemblyReference.cache
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\obj\Debug\ACOK.Sql.dll
+C:\Users\Alex\Copy\C#\AGOT.Sql\AGOT.Sql\obj\Debug\ACOK.Sql.pdb
