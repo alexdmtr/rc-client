@@ -7,6 +7,7 @@ using System;
 using Socket_Helper;
 using System.Runtime.Serialization.Formatters.Binary;
 
+[Obsolete]
 public static class GameNetworking
 {
     public static object SendAndReceive(object o)

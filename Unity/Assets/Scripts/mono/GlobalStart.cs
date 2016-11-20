@@ -48,7 +48,7 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
 
         ProgressBar.fillAmount = 0.75f;
         LoadingText.text = "Loading level";
-        yield return new WaitForSeconds(30);
+        //yield return new WaitForSeconds(30);
 
         
         AsyncOperation async = Application.LoadLevelAsync("MapScene");
@@ -224,7 +224,7 @@ The Stark army is formed mostly of reserve footmen and riders, of little value. 
 
     void OnApplicationQuit()
     {
-        uLink.Network.Disconnect();
+        //uLink.Network.Disconnect();
       
 
     }
