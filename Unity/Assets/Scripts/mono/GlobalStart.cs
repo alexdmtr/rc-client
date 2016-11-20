@@ -126,11 +126,11 @@ The Stark army is formed mostly of reserve footmen and riders, of little value. 
 
     Vector2 scrollPosition = Vector2.zero;
 
-    [RPC]
-    void SaySomethingNice(string somethingNice)
-    {
-        Debug.Log(somethingNice);
-    }
+    //[RPC]
+    //void SaySomethingNice(string somethingNice)
+    //{
+    //    Debug.Log(somethingNice);
+    //}
     public bool isConnected;
     public string toSend;
 
