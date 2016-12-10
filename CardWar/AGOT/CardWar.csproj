@@ -59,12 +59,7 @@
     <Compile Include="BoardState.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\CardWar.Sql\AGOT.Sql\CardWar.Sql.csproj">
-      <Project>{365e859f-1422-4e4b-8de7-852bed722940}</Project>
-      <Name>CardWar.Sql</Name>
-    </ProjectReference>
+    <Compile Include="SQL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
