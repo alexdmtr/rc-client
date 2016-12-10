@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AGOT", "AGOT\AGOT.csproj", "{58FB0725-725E-46EE-91F5-B7339576F2C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWar", "AGOT\CardWar.csproj", "{58FB0725-725E-46EE-91F5-B7339576F2C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACOK.Sql", "..\AGOT.Sql\AGOT.Sql\ACOK.Sql.csproj", "{365E859F-1422-4E4B-8DE7-852BED722940}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardWar.Sql", "..\CardWar.Sql\AGOT.Sql\CardWar.Sql.csproj", "{365E859F-1422-4E4B-8DE7-852BED722940}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

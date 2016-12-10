@@ -8,8 +8,8 @@
     <ProjectGuid>{365E859F-1422-4E4B-8DE7-852BED722940}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ACOK.Sql</RootNamespace>
-    <AssemblyName>ACOK.Sql</AssemblyName>
+    <RootNamespace>CardWar.Sql</RootNamespace>
+    <AssemblyName>CardWar.Sql</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

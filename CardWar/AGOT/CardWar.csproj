@@ -8,8 +8,8 @@
     <ProjectGuid>{58FB0725-725E-46EE-91F5-B7339576F2C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AGOT</RootNamespace>
-    <AssemblyName>AGOT</AssemblyName>
+    <RootNamespace>CardWar</RootNamespace>
+    <AssemblyName>CardWar</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -59,6 +59,12 @@
     <Compile Include="BoardState.cs" />
     <Compile Include="Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CardWar.Sql\AGOT.Sql\CardWar.Sql.csproj">
+      <Project>{365e859f-1422-4e4b-8de7-852bed722940}</Project>
+      <Name>CardWar.Sql</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
