@@ -19,6 +19,7 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
     public AudioSource MusicPlayer;
     public Image ProgressBar;
     public Text LoadingText;
+    public GameObject LoadingUI;
 
     public AudioClip LannisterMusic;
 
@@ -52,7 +53,10 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
 
         
         AsyncOperation async = Application.LoadLevelAsync("MapScene");
+      
         yield return async;
+
+        LoadingUI.SetActive(false);
         Global.State = GlobalStates.Map;
 
     }

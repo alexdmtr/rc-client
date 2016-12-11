@@ -43,13 +43,13 @@ public class Game : MonoBehaviour
         Board.AddPlayer(1);
         Board.AddCard("CARD_ROBB_STARK", 1, CardStates.Hero, null);
         Board.AddCard("CARD_CERSEI_LANNISTER", 0, CardStates.Hero, null);
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 4; i++)
             Board.AddCard("CARD_STARK_CAVALRY", 1, CardStates.InDeck, i);
-        for (int i = 2; i < 8; i++)
+        for (int i = 2; i < 10; i++)
             Board.AddCard("CARD_STARK_FOOTMAN", 1, CardStates.InDeck, i);
         for (int i = 0; i < 4; i++)
             Board.AddCard("CARD_LANNISTER_FOOTMAN", 0, CardStates.InDeck, i);
-        for (int i = 6; i < 8; i++)
+        for (int i = 6; i < 4; i++)
             Board.AddCard("CARD_LANNISTER_CAVALRY", 0, CardStates.InDeck, i);
         Board.AddCard("CARD_CHELLA", 0, CardStates.InDeck, 7);
         Board.AddCard("CARD_SHAGGA", 0, CardStates.InDeck, 8);
@@ -609,6 +609,7 @@ public class Game : MonoBehaviour
             var History = new List<KeyValuePair<BoardAction, BoardState>>();
             CurrentActionData = new ActionData();
             CurrentActionData.Action = ToDoAction;
+            Debug.Log(ToDoAction.Type);
             CurrentActionData.FinalState = BoardLogic.DoActionComplex(Board, new List<BoardAction> { ToDoAction }, ref History);
             CurrentActionData.History = History;
 

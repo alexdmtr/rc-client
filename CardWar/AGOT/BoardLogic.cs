@@ -130,6 +130,59 @@ public class BoardLogic
         //Actions.Add(GetEndTurnAction(CurrentState));
         return Actions;
     }
+
+    private static double AI_GetPlayerScore(BoardState State, int playerID)
+    {
+        double score = 0;
+        int opponentID;
+
+        int heroHealth = State.GetCardHealth(State.GetCard(State.GetHeroID(playerID)));
+        score += heroHealth * 0.5;
+
+
+
+        if (playerID == 0)
+            opponentID = 1;
+        else
+            opponentID = 0;
+
+        int enemyHeroHealth = State.GetCardHealth(State.GetCard(State.GetHeroID(opponentID)));
+
+        score = score - 0.65 * enemyHeroHealth;
+
+        List<Card> boardCards = State.GetPlayerOnBoardMinions(playerID);
+        foreach (Card card in boardCards)
+        {
+            int cardHealth = State.GetCardHealth(card);
+            int cardAttack = State.GetCardAttack(card);
+
+            score += 0.8 * cardHealth + 0.7 * cardAttack;
+        }
+
+        List<Card> enemyBoardCards = State.GetPlayerOnBoardMinions(opponentID);
+        foreach (Card card in enemyBoardCards)
+        {
+            int cardHealth = State.GetCardHealth(card);
+            int cardAttack = State.GetCardAttack(card);
+
+            score = score - 2.0 * (cardAttack + cardHealth);
+        }
+
+        if (heroHealth < 1)
+            score = Mathf.NegativeInfinity;
+        if (enemyHeroHealth < 1)
+            score = Mathf.Infinity;
+
+        return score;
+    }
+
+    class ActionAfermath
+    {
+        public BoardAction Action;
+        public BoardState State;
+        public List<KeyValuePair<BoardAction, BoardState>> History;
+        public double Score;
+    }
     private static BoardState DoAITurn(BoardState InitialState, ref List<KeyValuePair<BoardAction, BoardState>> History)
     {
         BoardState CurrentState = InitialState.Copy();
@@ -139,22 +192,55 @@ public class BoardLogic
         else
             opponentID = 0;
 
-        List<Card> handCards = CurrentState.GetPlayerInHandCards(CurrentState.ActivePlayer);
-        foreach (Card card in handCards)
+        while (true)
         {
-            BoardAction PlayCard = GetPlayCardAction(CurrentState, card.ID);
-            if (CanDoAction(CurrentState, PlayCard))
-                CurrentState = DoActionComplex(CurrentState, new List<BoardAction> { PlayCard }, ref History);
-        }
-        List<Card> boardCards = CurrentState.GetPlayerOnBoardMinions(CurrentState.ActivePlayer);
-        boardCards.Add(CurrentState.GetCard(CurrentState.GetHeroID(CurrentState.ActivePlayer)));
+            List<BoardAction> possibleActions = GetAllPossibleActions(CurrentState);
+            if (possibleActions.Count == 0)
+                break;
+            List<ActionAfermath> aftermaths = new List<ActionAfermath>();
+            foreach (BoardAction action in possibleActions)
+                if (CanDoAction(CurrentState, action))
+                {
+                    var newHistory = new List<KeyValuePair<BoardAction, BoardState>>(History);
 
-        foreach (Card card in boardCards)
-        {
-            BoardAction Attack = BoardLogic.GetAttackAction(CurrentState, card.ID, CurrentState.GetHeroID(opponentID));
-            if (CanDoAction(CurrentState, Attack))
-                CurrentState = DoActionComplex(CurrentState, new List<BoardAction> { Attack }, ref History);
+                    BoardState state = DoActionComplex(CurrentState, new List<BoardAction> { action }, ref newHistory).Copy();
+
+                    ActionAfermath aftermath = new ActionAfermath() { Action = action, History = newHistory, Score = AI_GetPlayerScore(state, CurrentState.ActivePlayer), State = state };
+                    aftermaths.Add(aftermath);
+                }
+
+            aftermaths.Sort((x, y) => x.Score.CompareTo(y.Score));
+            aftermaths.Reverse();
+
+
+            CurrentState = aftermaths[0].State;
+            History = aftermaths[0].History;
+
         }
+        //Debug.Log("Number of aftermaths: " + aftermaths.Count);
+        //foreach (var aftermath in aftermaths)
+        //    Debug.Log(aftermath.Action.Type + " => " + aftermath.Score.ToString());
+        //Debug.Log("Best aftermath: " + aftermaths[0].Score);
+        //Debug.Log("Worst aftermath: " + aftermaths[aftermaths.Count - 1].Score);
+
+
+        //List<Card> handCards = CurrentState.GetPlayerInHandCards(CurrentState.ActivePlayer);
+        //foreach (Card card in handCards)
+        //{
+        //    BoardAction PlayCard = GetPlayCardAction(CurrentState, card.ID);
+        //    if (CanDoAction(CurrentState, PlayCard))
+        //        CurrentState = DoActionComplex(CurrentState, new List<BoardAction> { PlayCard }, ref History);
+        //}
+        //List<Card> boardCards = CurrentState.GetPlayerOnBoardMinions(CurrentState.ActivePlayer);
+        //boardCards.Add(CurrentState.GetCard(CurrentState.GetHeroID(CurrentState.ActivePlayer)));
+
+        //foreach (Card card in boardCards)
+        //{
+        //    BoardAction Attack = BoardLogic.GetAttackAction(CurrentState, card.ID, CurrentState.GetHeroID(opponentID));
+        //    if (CanDoAction(CurrentState, Attack))
+        //        CurrentState = DoActionComplex(CurrentState, new List<BoardAction> { Attack }, ref History);
+        //}
+
         BoardAction EndTurn = GetEndTurnAction(CurrentState);
         CurrentState = DoActionComplex(CurrentState, new List<BoardAction> { EndTurn }, ref History);
         return CurrentState;
