@@ -11,7 +11,7 @@ public class ClassesPanel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        DataTable dt = SQL.Query("SELECT * FROM Classes");
+        DataTable dt = SQL.Query("SELECT * FROM Classes WHERE Type = 'CLASS_LANNISTER'");
       
         for (int i = 0; i < dt.Rows.Count; i++)
         {

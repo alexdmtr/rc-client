@@ -47,14 +47,14 @@ public class Game : MonoBehaviour
             Board.AddCard("CARD_STARK_CAVALRY", 1, CardStates.InDeck, i);
         for (int i = 2; i < 10; i++)
             Board.AddCard("CARD_STARK_FOOTMAN", 1, CardStates.InDeck, i);
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 10; i++)
             Board.AddCard("CARD_LANNISTER_FOOTMAN", 0, CardStates.InDeck, i);
-        for (int i = 6; i < 4; i++)
+        for (int i = 0; i < 4; i++)
             Board.AddCard("CARD_LANNISTER_CAVALRY", 0, CardStates.InDeck, i);
-        Board.AddCard("CARD_CHELLA", 0, CardStates.InDeck, 7);
-        Board.AddCard("CARD_SHAGGA", 0, CardStates.InDeck, 8);
-        Board.AddCard("CARD_TIMETT", 0, CardStates.InDeck, 9);
-        Board.AddCard("CARD_JAIME_LANNISTER", 0, CardStates.OnBoard, 0);
+        //Board.AddCard("CARD_CHELLA", 0, CardStates.InDeck, 7);
+        //Board.AddCard("CARD_SHAGGA", 0, CardStates.InDeck, 8);
+        //Board.AddCard("CARD_TIMETT", 0, CardStates.InDeck, 9);
+        Board.AddCard("CARD_JAIME_LANNISTER", 0, CardStates.InDeck, 0);
         Board.AddCard("CARD_THEON_GREYJOY", 1, CardStates.OnBoard, 0);
         var History = new List<KeyValuePair<BoardAction, BoardState>>();
         PreppedBoardStates = new List<ActionData>();

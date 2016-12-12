@@ -139,8 +139,6 @@ public class BoardLogic
         int heroHealth = State.GetCardHealth(State.GetCard(State.GetHeroID(playerID)));
         score += heroHealth * 0.5;
 
-
-
         if (playerID == 0)
             opponentID = 1;
         else
