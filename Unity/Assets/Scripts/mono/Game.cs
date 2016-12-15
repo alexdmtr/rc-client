@@ -389,7 +389,8 @@ public class Game : MonoBehaviour
             DetailedCard.gameObject.SetActive(x.State != CardStates.InDeck && !(x.State == CardStates.InHand && x.PlayerID == 1) && hoveredCard != null && selectedCard == null && ((timeHovered > 0.5) || x.State == CardStates.InHand));
         }
         else if (hoveredCard == null)
-            DetailedCard.gameObject.SetActive(false);
+            if (DetailedCard != null)
+                DetailedCard.gameObject.SetActive(false);
 
         //if (Input.GetKeyUp(KeyCode.Space))
         //{
