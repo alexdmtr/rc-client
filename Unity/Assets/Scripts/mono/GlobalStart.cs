@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using UnityEngine.UI;
-using Parse;
-using System.Threading.Tasks;
+//using Parse;
+//using System.Threading.Tasks;
 using CardWar.Models;
 using Newtonsoft.Json;
 
