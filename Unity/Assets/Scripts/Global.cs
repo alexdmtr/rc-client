@@ -141,16 +141,18 @@ public class Global
 	public static void Initialize(GameObject GamePrefab)
 	{
         Global.GamePrefab = GamePrefab;
-		SQL.Initialize();
 
-        SQL.ExecuteFile(@"SQL/Tables");
-        SQL.ExecuteFile(@"SQL/CardTypes");
-        SQL.ExecuteFile(@"SQL/Actions");
-        SQL.ExecuteFile(@"SQL/Cards");
-        SQL.ExecuteFile(@"SQL/Scenarios");
-        SQL.ExecuteFile(@"SQL/LoadingScreens");
-        SQL.ExecuteFile(@"SQL/Quotes");
-        SQL.ExecuteFile(@"SQL/Classes");
+        //pdapdateFromServer();
+		//SQL.Initialize();
+
+  //      SQL.ExecuteFile(@"SQL/Tables");
+  //      SQL.ExecuteFile(@"SQL/CardTypes");
+  //      SQL.ExecuteFile(@"SQL/Actions");
+  //      SQL.ExecuteFile(@"SQL/Cards");
+  //      SQL.ExecuteFile(@"SQL/Scenarios");
+  //      SQL.ExecuteFile(@"SQL/LoadingScreens");
+  //      SQL.ExecuteFile(@"SQL/Quotes");
+  //      SQL.ExecuteFile(@"SQL/Classes");
 
         State = GlobalStates.Intro;
         //GameObject.Instantiate(GamePrefab);
@@ -163,7 +165,7 @@ public class Global
 	}
 	public static void Quit()
 	{
-		SQL.Quit();
+		//SQL.Quit();
 	}
 	
 	

@@ -8,4 +8,4 @@ INSERT INTO Actions	(Type)
 				('ACTION_ATTACK'),
 				('ACTION_KILL'),
 				('ACTION_AI_TURN'),
-				('ACTION_START_GAME'),
+				('ACTION_START_GAME')

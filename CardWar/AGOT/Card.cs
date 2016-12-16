@@ -3,6 +3,7 @@ using System.Collections;
 using System.Data;
 using System.Text;
 using System;
+using CardWar.Models;
 
 [Serializable()]
 public enum CardStates { Dead, InDeck, InHand, OnBoard, Hero };
@@ -16,7 +17,7 @@ public class Card
     public int? Position;
     public int Health;
     public bool CanAttack = true;
-    private DataTable CardData;
+    private CardModel CardData;
 
 
     public Card(int ID, string Type, int PlayerID, CardStates State, int? Position)
@@ -30,44 +31,53 @@ public class Card
         StringBuilder QueryText = new StringBuilder(@"SELECT * FROM Cards WHERE TYPE='");
         QueryText.Append(Type);
         QueryText.Append(@"'");
-        CardData = SQL.Query(QueryText.ToString());
+        CardData = Db.FindCard(this.Type);
+
+        if (CardData == null)
+            throw new Exception(String.Format("Card {0} not found", this.Type));
 
         this.Health = GetBaseMaxHealth();
     }
 
-    private object GetColumn(string columnName)
-    {
-        return CardData.Rows[0][columnName];
-    }
+    //private object GetColumn(string columnName)
+    //{
+    //    return CardData.Rows[0][columnName];
+    //}
 
     public int GetBaseManaCost()
     {
-        return (int)(GetColumn("Mana"));
+        return CardData.Mana;
+        //return (int)(GetColumn("Mana"));
     }
 
     public int GetBaseAttack()
     {
-        return (int)(GetColumn("Attack"));
+        return CardData.Attack;
+        //return (int)(GetColumn("Attack"));
     }
 
     public int GetBaseMaxHealth()
     {
-        return (int)(GetColumn("Health"));
+        return CardData.Health;
+        //return (int)(GetColumn("Health"));
     }
 
     public string GetCardType()
     {
-        return (string)(GetColumn("CardType"));
+        return CardData.CardType;
+        //return (string)(GetColumn("CardType"));
     }
 
     public string GetCardGFX()
     {
-        return (string)(GetColumn("CardGFX"));
+        return CardData.CardGFX;
+        //return (string)(GetColumn("CardGFX"));
     }
 
     public string GetName()
     {
-        return (string)(GetColumn("Name"));
+        return CardData.Name;
+        //return (string)(GetColumn("Name"));
     }
 
     public Card Copy()

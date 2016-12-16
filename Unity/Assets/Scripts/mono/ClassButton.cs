@@ -20,7 +20,8 @@ public class ClassButton : MonoBehaviour {
 
     public void UpdateText()
     {
-        string text = (string)SQL.Query("SELECT Name FROM Classes WHERE Type='" + ClassType + "'").Rows[0][0];
+        string text = Db.Classes.Find(c => c.Type.Equals(ClassType)).Name;
+        //string text = (string)SQL.Query("SELECT Name FROM Classes WHERE Type='" + ClassType + "'").Rows[0][0];
         Text.text = text;
     }
 

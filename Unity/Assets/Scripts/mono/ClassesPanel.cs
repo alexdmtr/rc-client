@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Data;
+using System.Collections.Generic;
+using CardWar.Models;
 
 public class ClassesPanel : MonoBehaviour {
 
@@ -11,13 +13,13 @@ public class ClassesPanel : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        DataTable dt = SQL.Query("SELECT * FROM Classes WHERE Type = 'CLASS_LANNISTER'");
-      
-        for (int i = 0; i < dt.Rows.Count; i++)
-        {
-            string type = (string)dt.Rows[i]["Type"];
+        //DataTable dt = SQL.Query("SELECT * FROM Classes WHERE Type = 'CLASS_LANNISTER'");
+        List<ClassModel> classes = Db.Classes;
 
-            Debug.Log(type);
+        foreach (ClassModel c in classes)
+        {
+            string type = c.Type;
+            
             ClassButton ClassButton = GameObject.Instantiate(ClassButtonPrefab).GetComponent<ClassButton>();
             ClassButton.transform.parent = transform;
             ClassButton.ClassType = type;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Text;
+using CardWar.Models;
 
 public class CardHandler : MonoBehaviour {
 
@@ -41,8 +42,11 @@ public class CardHandler : MonoBehaviour {
         Hero.gameObject.SetActive(State == CardStates.Hero);
         Minion.gameObject.SetActive(State == CardStates.OnBoard);
 
-        string cardBack = (string)SQL.Query("SELECT Cardback FROM Classes WHERE Type='" + classType + "'").Rows[0][0];
-        string cardFront = (string)SQL.Query("SELECT Cardfront FROM Classes WHERE Type='" + classType + "'").Rows[0][0];
+        ClassModel model = Db.Classes.Find(c => c.Type.Equals(classType));
+        string cardBack = model.Cardback;
+        string cardFront = model.Cardfront;
+        //string cardBack = (string)SQL.Query("SELECT Cardback FROM Classes WHERE Type='" + classType + "'").Rows[0][0];
+        //string cardFront = (string)SQL.Query("SELECT Cardfront FROM Classes WHERE Type='" + classType + "'").Rows[0][0];
         Hand.UpdateCard(showFront, Name, "", Mana.ToString(), Attack.ToString(), Health, ImagePath, cardBack, cardFront);
         Hero.UpdateCard(Attack.ToString(), showAttack, Health, true, ImagePath);
         Minion.UpdateCard(Attack.ToString(), Health, ImagePath);

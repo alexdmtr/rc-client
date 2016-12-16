@@ -27,7 +27,7 @@ public class BoardAction
         StringBuilder QueryText = new StringBuilder("SELECT * FROM Actions WHERE Type='");
         QueryText.Append(Type);
         QueryText.Append(@"'");
-        ActionData = SQL.Query(QueryText.ToString());
+        //ActionData = SQL.Query(QueryText.ToString());
     }
 
     public static bool operator !=(BoardAction A, BoardAction B)

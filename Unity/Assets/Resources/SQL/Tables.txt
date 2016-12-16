@@ -1,20 +1,12 @@
-﻿DROP TABLE CardTypes;
-DROP TABLE Cards;
-DROP TABLE Actions;
-DROP TABLE Scenarios;
-DROP TABLE LoadingScreens;
-DROP TABLE Quotes;
-DROP TABLE Classes;
-
-CREATE TABLE CardTypes
+﻿CREATE TABLE CardTypes
 (
-	ID int IDENTITY(0, 1),
+	ID serial,
 	Type varchar(255)
 );
 
 CREATE TABLE Cards
 (
-	ID int IDENTITY(0, 1),
+	ID serial,
 	Type varchar(255),
 	CardType varchar(255),
 	CardGFX varchar(255),
@@ -27,13 +19,13 @@ CREATE TABLE Cards
 
 CREATE TABLE Actions
 (
-	ID int IDENTITY(0, 1),
+	ID serial,
 	Type varchar(255)
 );
 
 CREATE TABLE Scenarios
 (
-	ID int IDENTITY(0, 1),
+	ID serial,
 	Type varchar(255)
 );
 
@@ -49,7 +41,7 @@ CREATE TABLE Quotes
 
 CREATE TABLE Classes
 (
-	ID int IDENTITY(0, 1),
+	ID serial,
 	Type varchar(255),
 	Name varchar(255),
 	Hero varchar(255),

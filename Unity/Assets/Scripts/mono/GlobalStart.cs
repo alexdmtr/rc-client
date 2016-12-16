@@ -7,6 +7,8 @@ using System.Text;
 using UnityEngine.UI;
 using Parse;
 using System.Threading.Tasks;
+using CardWar.Models;
+using Newtonsoft.Json;
 
 public class GlobalStart : UnityEngine.MonoBehaviour {
 
@@ -25,14 +27,40 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
 
     IEnumerator LoadGameData()
     {
+        LoadingText.text = "Connecting to server";
+
+        yield return null;
+
+        Db.UpdateFromServer();
+
+        yield return null;
+
+        Debug.Log(string.Format("{0} cards in DB", Db.Cards.Count));
+
+        foreach (CardModel c in Db.Cards)
+        {
+            Debug.Log(JsonConvert.SerializeObject(c));
+        }
+
+        Debug.Log(string.Format("{0} classes in DB", Db.Classes.Count));
+
+        foreach (ClassModel c in Db.Classes) 
+        {
+            Debug.Log(JsonConvert.SerializeObject(c));
+        }
+
+        //DataTable dt = SQL.Query("SELECT CardGFX FROM Cards");
+
         LoadingText.text = "Loading textures";
-        DataTable dt = SQL.Query("SELECT CardGFX FROM Cards");
-        for (int i = 0; i < dt.Rows.Count; i++)
+
+        var cards = Db.Cards;
+        for (int i = 0; i < cards.Count; i++)
         {
             StringBuilder ImagePath = new StringBuilder(@"Textures/Cards/");
-            ImagePath.Append(dt.Rows[i]["CardGFX"] as string);
+            //ImagePath.Append(dt.Rows[i]["CardGFX"] as string);
+            ImagePath.Append(cards[i].CardGFX);
             DummyForLoading.material.SetTexture(0, Global.LoadTexture(ImagePath.ToString()));
-            ProgressBar.fillAmount = (i * 1f/ dt.Rows.Count) * 0.25f;
+            ProgressBar.fillAmount = (i * 1f/ cards.Count) * 0.25f;
             yield return null;
         }
 
@@ -155,12 +183,13 @@ The Stark army is formed mostly of reserve footmen and riders, of little value. 
 
     void ChooseRandomLoadingScreen()
     {
+        return;
         if (LoadingScreens == null || LoadingScreens.Count == 0)
         {
             LoadingScreens = new List<string>();
-            DataTable dt = SQL.Query("SELECT * FROM LoadingScreens");
-            for (int i = 0; i < dt.Rows.Count; i++)
-                LoadingScreens.Add(dt.Rows[i]["Image"] as string);
+            //DataTable dt = SQL.Query("SELECT * FROM LoadingScreens");
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //    LoadingScreens.Add(dt.Rows[i]["Image"] as string);
         }
 
 
@@ -172,9 +201,9 @@ The Stark army is formed mostly of reserve footmen and riders, of little value. 
         if (Quotes == null || Quotes.Count == 0)
         {
             Quotes = new List<string>();
-            DataTable dt = SQL.Query("SELECT * FROM Quotes");
-            for (int i = 0; i < dt.Rows.Count; i++)
-                Quotes.Add((string)dt.Rows[i]["Quote"]);
+            //DataTable dt = SQL.Query("SELECT * FROM Quotes");
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //    Quotes.Add((string)dt.Rows[i]["Quote"]);
         }
 
         indx = UnityEngine.Random.Range(0, Quotes.Count - 1);
