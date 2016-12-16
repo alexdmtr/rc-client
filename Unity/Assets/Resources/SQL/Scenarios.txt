@@ -1,2 +1,0 @@
-﻿INSERT INTO Scenarios (Type)
-			VALUES ('SCENARIO_GREEN_FORK');

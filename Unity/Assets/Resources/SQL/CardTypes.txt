@@ -1,2 +1,0 @@
-﻿INSERT INTO CardTypes	(Type)
-			VALUES		('CARDTYPE_CHARACTER');
