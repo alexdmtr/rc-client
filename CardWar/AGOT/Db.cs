@@ -53,7 +53,7 @@ public class Db
 
     static string QueryServer(string table)
     {
-        string URL = @"https://card-war-server.herokuapp.com/?";
+        string URL = @"https://card-war-server.herokuapp.com/query?";
 
         var client = new WebClient();
         ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
