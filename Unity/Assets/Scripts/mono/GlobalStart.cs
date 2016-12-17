@@ -9,11 +9,12 @@ using UnityEngine.UI;
 //using System.Threading.Tasks;
 using CardWar.Models;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 
 public class GlobalStart : UnityEngine.MonoBehaviour {
 
 	// Use this for initialization
-    public GameObject GamePrefab;
+    //public GameObject GamePrefab;
     public GUIStyle GUIStyle;
     public MeshRenderer LoadingScreen;
     public UnityEngine.UI.Text QuoteSection;
@@ -79,9 +80,10 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
         LoadingText.text = "Loading level";
         //yield return new WaitForSeconds(30);
 
-        
-        AsyncOperation async = Application.LoadLevelAsync("MapScene");
-      
+
+        //AsyncOperation async = Application.LoadLevelAsync("MapScene");
+
+        AsyncOperation async = SceneManager.LoadSceneAsync("MapScene");
         yield return async;
 
         LoadingUI.SetActive(false);
@@ -94,7 +96,7 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
 
 
 	void Start () {
-        Global.Initialize(GamePrefab);
+        //Global.Initialize(GamePrefab);
         DontDestroyOnLoad(this);
         ChooseRandomLoadingScreen();
         MusicPlayer.Play();
@@ -111,50 +113,7 @@ public class GlobalStart : UnityEngine.MonoBehaviour {
         }
 	}
 
-    string GetIntroText()
-    {
-        #region longText
-        string text = @"<b>In-development Card Game</b>
-
-<i>-Demonstrative build #1–</i>
-                           
-Hello there and welcome! Thank you for taking your time to review this project. My name is Alex Dumitru and I’d like to present to you the first demonstrative version of my upcoming card game.
-
-<b><i>GAMEPLAY</i></b>
-The game is easy to learn. There are 2 players; each of them starts out with a deck of cards (in this case, 10 cards for each player). Cards can be many things, but, for the purposes of this demonstration, there is only one type of card: the character. A character is defined by two values: its <b><color=YELLOW>ATTACK VALUE</color></b>, shown by the number on its bottom left side, and its <b><color=RED>HEALTH VALUE</color></b>, shown by the number on its bottom right side.
-
-Each player starts in control of a <b>HERO</b> character. This hero must be protected at all costs; when a player's hero dies, that player <b><color=RED>LOSES</color></b> the game. Thus the game's <b><color=GREEN>WINNING CONDITION:</color></b> kill the enemy hero.
-
-The game is played in turns, each consecutive turn belonging to another player (the active player changes). Each turn, the active player draws a card from the top of their deck, their maximum amount of mana crystals is increased (up to 10) and that amount is completely replenished. Once a player ends his turn, the other player's next turn begins.
-If you are the active player and seek to end your turn, simply press the end turn button at the right of the game board. 
-NOTE: The game is meant for online multiplayer vs human opponents. For the purposes of this demonstration, the opponent has been outfitted with a basic Artificial Intelligence.
-
-The game starts with each player drawing 4 cards, after which the turn starts for the first player (in this case, the human player).
-
-At the bottom of the screen lies your current hand. In your hand you find all the cards that you have drawn from your deck. If it is your turn and you have sufficient mana crystals (denoted by the number of mana crystals that appears in the bottom-right corner of the screen), you can play a card, substracting its <b><color=BLUE>MANA COST</color></b> (shown in its upper left corner whilst the card is in your hand) from your current mana.To play a card, simply click and drag it onto the board.
-In this instance, playing a character card means putting it in on your side of the board, represented by the space between the middle line and your hero.
-
-Once a character is on the board and once a turn has passed, it can attack, once per turn, an enemy character. An attack is simple - each of the two participants take damage (their health is lowered) by the attack value of the other. If a character's health reaches 0, they die.
-In order to attack with a ready character, simply click and drag your character, releasing it over the suitable enemy character you wish to attack.
-
-<b><i>LORE</i></b>
-For this demonstration, I have chosen one scenario: the Battle of the Green Fork, as presented in Game of Thrones (the TV series), in which Tywin Lannister, leading a numerous Lannister host, aided by Vale wildlings - which were recruited by his son, Tyrion - makes battle with an unexpectedly small Stark host. The tiny Stark host of about 2,000 men ultimately turned out to be a diversion, as most of Robb Stark's army had been focused on the capture of Jaime Lannister at the Battle of the Whispering Wood.
-You (the human player) are in control of Tywin Lannister and his army. March and destroy whatever forces Stark throws in your way.
-NOTE: Robb Stark does not actually participate in this battle; the choice of using him as the opposing Hero is symbolic. 
-
-Your forces consist of, primarily, a large number of Lannister Infantry and Cavalry - efficient and plentiful. You also are in possession of a wildling army, as represented by three tribal chieftains - Shagga, Timett and Chella. 
-
-The Stark army is formed mostly of reserve footmen and riders, of little value. Victory is imminent.
-
-<b><color=YELLOW>HEAR ME ROAR!</color></b>
-
-
-
-<i>(NOTE: This debriefing can also be read in-game, by clicking the 'Help' button in the bottom-right corner of the board.)</i>
-";
-        #endregion
-        return text;
-    }
+    
 
     Vector2 scrollPosition = Vector2.zero;
 
@@ -236,7 +195,7 @@ The Stark army is formed mostly of reserve footmen and riders, of little value. 
             float width = Screen.width * 0.9f;
             scrollPosition = GUI.BeginScrollView(new Rect(0.025f * Screen.width, 0.025f * Screen.height, Screen.width * 0.95f, Screen.height * 0.95f), scrollPosition, new Rect(0, 0, width, 900));
             
-            GUI.Label(new Rect(0, 0, width, 1200), GetIntroText(), GUIStyle);
+            //GUI.Label(new Rect(0, 0, width, 1200), GetIntroText(), GUIStyle);
 
             GUI.EndScrollView();
 
