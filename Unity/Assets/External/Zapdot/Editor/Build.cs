@@ -182,7 +182,7 @@ public class Build : MonoBehaviour
         {
             StreamWriter sw = new StreamWriter(fs);
 
-            sw.WriteLine("Hello world!");
+            //sw.WriteLine("Hello world!");
 
             sw.Write(Newtonsoft.Json.JsonConvert.SerializeObject(new { version = AppInfo.fullVersion, date = DateTime.Now }));
 

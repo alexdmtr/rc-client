@@ -55,10 +55,12 @@ public class Db
     {
         string URL = @"https://card-war-server.herokuapp.com/query?";
 
-        var client = new WebClient();
-        ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
-        return client.DownloadString(URL + "table=" + table);
-
+        using (WebClient client = new WebClient())
+        {
+            ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
+            return client.DownloadString(URL + "table=" + table);
+        }
+        
         
     }
     public static void UpdateFromServer()
