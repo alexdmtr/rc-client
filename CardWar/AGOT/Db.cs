@@ -59,14 +59,26 @@ public class Db
         {
             ServicePointManager.ServerCertificateValidationCallback = MyRemoteCertificateValidationCallback;
             return client.DownloadString(URL + "table=" + table);
+            
         }
         
         
     }
     public static void UpdateFromServer()
     {
-        Cards = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CardModel>>(QueryServer("cards"));
-        Classes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ClassModel>>(QueryServer("classes"));
+        using (StreamWriter sw = new StreamWriter("cards.json", false, System.Text.Encoding.UTF8))
+        {
+            string cardsJson = QueryServer("cards");
+            sw.Write(cardsJson);
+            Cards = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CardModel>>(cardsJson);
+        }
+
+        using (StreamWriter sw = new StreamWriter("classes.json", false, System.Text.Encoding.UTF8))
+        {
+            string classesJson = QueryServer("classes");
+            sw.Write(classesJson);
+            Classes = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ClassModel>>(classesJson);
+        }
     }
 
 
